@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+import csv, json, sys
+from re import sub
+
+if(len(sys.argv) < 2):
+  print('Passe o nome de um arquivo para o programa.')
+  print('Ex: convert-csv-to-json arquivo.csv')
+  exit(1)
+
+fields = [
+  'mes',
+  'uf',
+  'cod-munic-ibge',
+  'nome-munic',
+  'nis',
+  'cpf',
+  'nome',
+  'nis-respons',
+  'cpf-respons',
+  'nome-respons',
+  'enquadramento',
+  'parcela',
+  'observacao',
+  'valor'
+]
+
+csvFile = sys.argv[1]
+
+def index(idx):
+    return { 'index': { '_id': idx } }
+
+with open(csvFile, encoding='cp1252') as csvfile:
+    spamreader = csv.DictReader(csvfile, fieldnames=fields, delimiter=';', quotechar='"')
+    for i, row in enumerate(spamreader):
+        if i > 0:
+            row['valor'] = float(sub(r',', '.', row['valor']))
+            print(json.dumps(index(i)))
+            print(json.dumps(row))
+
