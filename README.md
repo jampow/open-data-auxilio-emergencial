@@ -9,11 +9,7 @@ simples no kibana.
 
 Peguei os dados do governo federal sobre os pagamentos do auxilio emergencial,
 até o momento são dois csv's dos meses de abril e maio de 2020 que podem ser
-baixados com o comando abaixo.
-
-```sh
-# TODO: colocar os comandos aqui
-```
+baixados no [portal da trasparência do geverno federal]( http://www.portaltransparencia.gov.br/pagina-interna/603519-download-de-dados-auxilio-emergencial).
 
 ## Requisitos
 
